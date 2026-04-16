@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="전남 RISE 사업단 4월 뉴스레터">
+	<meta property="og:description" content="2025 전남 RISE사업의 새로운 소식을 확인하세요!">
+	<meta property="og:image" content="https://cloudweb.jnu.ac.kr/CrossEditor/binary/newimages/images/000548/20260414105454769_2XRSC6GL.gif">
+    <title>전남 RISE 사업단 4월 뉴스레터</title>
+    <style>
+        /* [1. 컬러 및 기본 테마] */
+        :root {
+            --main-color: #5bb3cc;
+            --sub-color: #78c2ad;
+            --bg-outer: #e9ecef;
+            --text-dark: #2c3e50;
+        }
+
+        body { 
+            margin: 0; padding: 40px 0; 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: var(--bg-outer); 
+            color: var(--text-dark); 
+        }
+
+        .newsletter-wrapper { 
+            max-width: 1000px; margin: 0 auto;
+            background-color: #fff; border-radius: 20px; 
+            overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+            border: 1px solid #dee2e6;
+        }
+
+        .container { padding: 50px 40px; }
+
+        /* [2. 헤더 스타일 - 잘림 방지 및 그림자] */
+        .header { 
+            width: 100%; height: auto; min-height: 250px;
+            display: flex; justify-content: center; align-items: center;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(91, 179, 204, 0.1);
+            border-bottom: 1px solid rgba(120, 194, 173, 0.2);
+        }
+        .header img { width: 100%; height: auto; object-fit: contain; cursor: pointer; display: block; }
+
+        h2.section-title { 
+            font-size: 1.6rem; color: var(--main-color); 
+            border-bottom: 3px solid var(--sub-color); 
+            padding-bottom: 10px; display: inline-block; margin-bottom: 40px;
+        }
+
+        /* [3. 이슈 기사 카드 - 2x2 고정 레이아웃] */
+        .article-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* 가로 2개 고정 */
+            gap: 30px; 
+            margin-bottom: 70px; 
+        }
+        .article-card { 
+            display: block; background: #fff; border: 1px solid #e1eef1; border-radius: 12px; 
+            overflow: hidden; text-decoration: none; color: inherit; 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .art-img-box { width: 100%; height: 220px; overflow: hidden; background: #f0f0f0; }
+        .art-img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        
+        /* 기사 카드 호버 효과 */
+        .article-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(91, 179, 204, 0.2);
+            border-color: var(--main-color);
+        }
+        .article-card:hover .art-img { transform: scale(1.1); filter: brightness(1.05); }
+
+        .art-body { padding: 20px; }
+        .art-tag { color: var(--sub-color); font-weight: bold; font-size: 0.9rem; }
+        .art-title { font-size: 1.15rem; margin: 10px 0; font-weight: 700; line-height: 1.4; }
+
+        /* [4. 현장 스케치 - 2x2 고정 레이아웃] */
+        .sketch-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* 가로 2개 고정 */
+            gap: 20px; 
+            margin-bottom: 70px; 
+        }
+        .sketch-card { 
+            border-radius: 15px; overflow: hidden; height: 280px; position: relative; 
+            cursor: pointer; background: #000;
+            transition: all 0.4s ease;
+        }
+        .sketch-card img { 
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.85;
+            transition: all 0.5s ease; 
+        }
+        
+        /* 현장 스케치 호버 효과 */
+        .sketch-card:hover img { transform: scale(1.1) rotate(1deg); opacity: 1; }
+        /* 현장 스케치 오버레이 - 글자 잘림 방지 설정 */
+		.sketch-overlay { 
+			position: absolute; 
+			bottom: 0; 
+			background: rgba(0, 82, 155, 0.85); /* 진한 파란색으로 가독성 상향 */
+			color: #fff; 
+			width: 100%; 
+			padding: 12px 15px; /* 여백 확보 */
+			font-size: 0.85rem; /* 글자 크기 약간 축소 */
+			text-align: center; 
+			transition: background 0.3s ease;
+			box-sizing: border-box; /* 패딩이 너비를 넘지 않게 고정 */
+			
+			/* [핵심] 줄바꿈 및 잘림 방지 */
+			white-space: normal;    /* 자동 줄바꿈 허용 */
+			line-height: 1.4;      /* 줄 간격 조절 */
+			word-break: keep-all;  /* 단어 단위로 예쁘게 끊기 */
+		}
+        .sketch-card:hover .sketch-overlay { background: var(--main-color); }
+
+        /* [5. 일정 표 및 기타] */
+        .schedule-table { width: 100%; border-collapse: collapse; border-top: 3px solid var(--main-color); margin-bottom: 70px; }
+        .schedule-table th { background: #f8f9fa; padding: 15px; color: var(--main-color); border-bottom: 1px solid #dee2e6; }
+        .schedule-table td { padding: 18px 15px; border-bottom: 1px solid #f0f0f0; }
+        .date-col { width: 30%; font-weight: bold; color: var(--sub-color); }
+
+        .footer { background: var(--main-color); color: #fff; padding: 50px 20px; text-align: center; }
+        .sns-link { display: inline-block; width: 45px; height: 45px; line-height: 45px; background: #fff; border-radius: 50%; margin: 0 10px; color: var(--main-color); text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .sns-link:hover { transform: scale(1.15); background: #fbc02d; color: #fff; }
+
+        /* 확대창 애니메이션 */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 85%; border: 5px solid #fff; border-radius: 10px; animation: zoomIn 0.3s ease; }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    
+		/* ============================================================
+		[모바일 최적화 스타일] - 화면 너비가 768px 이하일 때 적용
+	    ============================================================ */
+		@media screen and (max-width: 768px) {
+		body { padding: 0; } /* 바깥 여백 제거 */
+
+		.newsletter-wrapper { 
+        border-radius: 0; /* 테두리 둥글기 제거 */
+        border: none; 
+		}
+	
+		.container { padding: 30px 20px; } /* 내부 여백 줄임 */
+
+		/* 1. 헤더 높이 조절 */
+		.header { min-height: 150px; }
+
+		/* 2. 섹션 제목 크기 조절 */
+		h2.section-title { 
+        font-size: 1.3rem; 
+        margin-bottom: 25px; 
+		}
+
+		/* 3. 기사 카드: 2열 -> 1열로 변경 및 글자 크기 축소 */
+		.article-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+        margin-bottom: 50px; 
+		}
+    
+		.art-img-box { height: 180px; } /* 이미지 높이 최적화 */
+    
+		.art-title { 
+        font-size: 1.05rem; /* 글자 크기 축소 */
+        height: auto; /* 줄수 제한 해제 */
+		}
+
+		/* 4. 주요일정: 표 폰트 조절 */
+		.schedule-table { margin-bottom: 50px; }
+		.schedule-table th, .schedule-table td { 
+        padding: 12px 10px; 
+			font-size: 0.85rem; /* 글자 크기 축소 */
+		}
+		.date-col { width: 35%; }
+
+		/* 5. 현장 스케치: 2열 -> 1열로 변경 */
+		.sketch-grid { 
+			grid-template-columns: 1fr; 
+			gap: 15px; 
+		}
+		.sketch-card { height: 200px; }
+		.sketch-overlay { font-size: 0.8rem; padding: 10px; }
+
+		/* 6. 푸터: 텍스트 크기 조절 */
+		.footer { padding: 40px 20px; }
+		.footer-info { 
+			font-size: 0.75rem; /* 정보 텍스트 축소 */
+			word-break: keep-all; 
+		}
+		.sns-link { width: 40px; height: 40px; line-height: 40px; }
+		}
+	
+	</style>
+</head>
+<body>
+
+    <div class="newsletter-wrapper">
+        <a href="https://rise.jnu.ac.kr/rise/index.do" target="_blank" style="text-decoration: none; display: block;">
+            <header class="header">
+                <img src="https://cloudweb.jnu.ac.kr/CrossEditor/binary/newimages/images/000548/20260414105454769_2XRSC6GL.gif" alt="전남 RISE 4월 뉴스레터">
+            </header>
+        </a>
+
+        <div class="container">
+            <h2 class="section-title">전남 RISE사업단 소식</h2>
+            <div class="article-grid">
+                <a href="https://rise.jnu.ac.kr/rise/22059/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGcmlzZSUyRjM3MzMlMkY5Nzg1NDUlMkZhcnRjbFZpZXcuZG8lM0ZwYWdlJTNEMSUyNnNyY2hDb2x1bW4lM0QlMjZzcmNoV3JkJTNEJTI2YmJzQ2xTZXElM0QlMjZiYnNPcGVuV3JkU2VxJTNEJTI2cmdzQmduZGVTdHIlM0QlMjZyZ3NFbmRkZVN0ciUzRCUyNmlzVmlld01pbmUlM0RmYWxzZSUyNnBhc3N3b3JkJTNEJTI2" class="article-card" target="_blank">
+                    <div class="art-img-box"><img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3733/thumbnail/temp_1774428838459100.jpg" class="art-img"></div>
+                    <div class="art-body">
+                        <span class="art-tag">ISSUE 01</span>
+                        <h3 class="art-title">2025 전남 RISE사업 통합 성과공유회 개최</h3>
+                    </div>
+                </a>
+                <a href="https://today.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=174&bbsMode=view&key=5182" class="article-card" target="_blank">
+                    <div class="art-img-box"><img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3733/thumbnail/temp_1774428696702100.jpg" class="art-img"></div>
+                    <div class="art-body">
+                        <span class="art-tag">ISSUE 02</span>
+                        <h3 class="art-title">'석유화학 위기' 인재양성으로 돌파구 마련</h3>
+                    </div>
+                </a>
+                <a href="https://today.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=174&bbsMode=view&key=5183" class="article-card" target="_blank">
+                    <div class="art-img-box"><img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3733/thumbnail/temp_1774428745728100.jpg" class="art-img"></div>
+                    <div class="art-body">
+                        <span class="art-tag">ISSUE 03</span>
+                        <h3 class="art-title">지방소멸의 해법, 'K-컬쳐' 문화에서 찾다</h3>
+                    </div>
+                </a>
+                <a href="https://today.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=174&bbsMode=view&key=5116" class="article-card" target="_blank">
+                    <div class="art-img-box"><img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3733/thumbnail/temp_1774428320087100.jpg" class="art-img"></div>
+                    <div class="art-body">
+                        <span class="art-tag">ISSUE 04</span>
+                        <h3 class="art-title">우주항공·방위산업 중장기 로드맵 발표</h3>
+                    </div>
+                </a>
+            </div>
+
+            <h2 class="section-title">전남 RISE사업단 4월 주요일정</h2>
+            <table class="schedule-table">
+                <thead><tr><th>일정</th><th>프로그램</th></tr></thead>
+                <tbody>
+                    <tr><td class="date-col">2026.04.07</td><td>우리 동네 지킴이 1</td></tr>
+                    <tr><td class="date-col">2026.04.10</td><td>외국인 유학생 동아리 운영 1</td></tr>
+                    <tr><td class="date-col">2026.04.28 ~ 04.29</td><td>[START-UP BOOSTER] 1차 초창업기초 교육</td></tr>
+                    <tr><td class="date-col">2026.04.29 ~ 07.23</td><td>일상 속 AI 활용과 실습 교육프로그램</td></tr>
+                </tbody>
+            </table>
+
+            <h2 class="section-title">전남 RISE사업단 현장 스케치</h2>
+			<div class="sketch-grid">
+				<div class="sketch-card" onclick="openLightbox('https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133705954100.png')">
+					<img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133705954100.png">
+					<div class="sketch-overlay">2025년 전남대학교(여수) 전남 RISE사업 <br> 통합 성과공유회 (2.23.) 🔍</div>
+				</div>
+				
+				<div class="sketch-card" onclick="openLightbox('https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133638748100.jpg')">
+					<img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133638748100.jpg">
+					<div class="sketch-overlay">글로벌 인재 허브센터 <br> ’K-Boost 한국어 교실’ (2.23.~2.26.) 🔍</div>
+				</div>
+				
+				<div class="sketch-card" onclick="openLightbox('https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133409899100.jpg')">
+					<img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133409899100.jpg">
+					<div class="sketch-overlay">글로벌 인재 허브센터 <br> ’N-3 성과공유회’ (1.28.) 🔍</div>
+				</div>
+				
+				<div class="sketch-card" onclick="openLightbox('https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133308089100.jpg')">
+					<img src="https://cloudweb.jnu.ac.kr/sites/rise/atchmnfl/bbs/3738/thumbnail/temp_1776133308089100.jpg">
+					<div class="sketch-overlay">주력 산업혁신 챌린지 스마트항만 인사이트 <br> 아카데미-글로벌 현장(중국) 트랙 (1.19.~1.21.) 🔍</div>
+				</div>
+			</div>
+
+        <footer class="footer" style="background-color: #5bb3cc; padding: 40px 20px; text-align: center;">
+			<div class="footer-sns" style="margin-bottom: 20px;">
+				<a href="https://www.instagram.com/cnu_rise/" target="_blank" style="display: inline-block; width: 45px; height: 45px; background: #fff; border-radius: 50%; margin: 0 8px; vertical-align: middle; overflow: hidden;">
+					<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="IG" style="width: 24px !important; height: 24px !important; margin-top: 10px; border: 0;">
+				</a>
+				
+				<a href="https://www.youtube.com/channel/UCabf9YAtBdTmPeGmCC1CFNg?si=G-KhPjsRGL_YoXVE" target="_blank" style="display: inline-block; width: 45px; height: 45px; background: #fff; border-radius: 50%; margin: 0 8px; vertical-align: middle; overflow: hidden;">
+					<img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="YT" style="width: 24px !important; height: 24px !important; margin-top: 10px; border: 0;">
+				</a>
+				
+				<a href="https://rise.jnu.ac.kr/rise/index.do" target="_blank" style="display: inline-block; width: 45px; height: 45px; background: #fff; border-radius: 50%; margin: 0 8px; vertical-align: middle; overflow: hidden;">
+					<img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="WEB" style="width: 24px !important; height: 24px !important; margin-top: 10px; border: 0;">
+				</a>
+			</div>
+
+			<p style="font-size: 16px; font-weight: bold; margin: 10px 0 5px; color: #ffffff; font-family: sans-serif;">전남대학교 전남 RISE사업단</p>
+			<div class="footer-info" style="font-size: 12px; line-height: 1.6; color: #ffffff; opacity: 0.9; font-family: sans-serif;">
+				(59626) 전라남도 여수시 대학로 50 산학연구관 전남 RISE사업단 213호<br>
+				이메일: olee21@jnu.ac.kr | 전화: 061) 659-7822, 7826<br>
+				Copyright © 전남 RISE사업단. All Rights Reserved.
+			</div>
+		</footer>
+    </div>
+
+    <div id="lightbox" onclick="this.style.display='none'; document.body.style.overflow='auto';">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
+</body>
+</html>
